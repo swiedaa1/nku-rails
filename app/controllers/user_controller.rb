@@ -1,9 +1,9 @@
 class UserController < ApplicationController
+def new
+end
 def show
  user = User.find(params[:id]
  @user = UserPresenter.new(user)
-end
-def show
  @user = current_user.find(params[:id])
 end
 def create
