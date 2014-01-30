@@ -14,9 +14,8 @@ def create
   end
 end
 def show
-  user = User.find(params[:id])
-  @user = UserPresenter.new(user)
-end
+  @post = Post.find(params[:id])
+  end
 
 def index
   @posts = Post.all
