@@ -2,9 +2,9 @@ class UserController < ApplicationController
 def new
 end
 def show
- user = User.find(params[:id]
+ user = User.find(params[:id])
  @user = UserPresenter.new(user)
- @user = current_user.find(params[:id])
+" @user = current_user.find(params[:id])"
 end
 def create
  post = Post.new(params)
