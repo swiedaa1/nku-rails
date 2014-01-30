@@ -1,4 +1,4 @@
-<nk_to 'Edit', edit_post_path(@post) %>
+<% link_to 'Edit', edit_post_path(@post) %>
 <%if user.admin? %>
 	<%= link_to edit_user_path, 'Edit' %>
 <% end %> 
