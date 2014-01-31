@@ -1,49 +1,27 @@
 class UserController < ApplicationController
 
-def new                                                                                                                                                                                                        
-  @post = User.new                                                                                                                                                                                             
-end                                                                                                                                                                                                            
-                                                                                                                                                                                                               
-def create                                                                                                                                                                                                     
-  @post = User.new(params[:post].permit(:name,:nickname,:email, :image, :text))                                                                                                                                
-                                                                                                                                                                                                               
-  if @post.save                                                                                                                                                                                                
-    redirect_to @post, notice: "Success!"                                                                                                                                                                      
-  else                                                                                                                                                                                                         
-    render 'new'                                                                                                                                                                                               
-  end                                                                                                                                                                                                          
-end                                                                                                                                                                                                            
-def show                                                                                                                                                                                                       
-  @post = User.find(params[:id])                                                                                                                                                                               
-  end                                                                                                                                                                                                          
-                                                                                                                                                                                                               
-def index                                                                                                                                                                                                      
-  @posts = User.all                                                                                                                                                                                            
-end                                                                                                                                                                                                            
-                                                                                                                                                                                                               
-def edit                                                                                                                                                                                                       
-  @post = User.find(params[:id])                                                                                                                                                                               
-end                                                                                                                                                                                                            
-                                                                                                                                                                                                               
-def update                                                                                                                                                                                                     
-  @post = User.find(params[:id])                                                                                                                                                                               
-                                                                                                                                                                                                               
-  if @post.update(params[:post].permit(:name,:nickname,:email,:image, :text) )                                                                                                                                 
-    redirect_to @post                                                                                                                                                                                          
-  else                                                                                                                                                                                                         
-    render 'edit'                                                                                                                                                                                              
-  end                                                                                                                                                                                                          
-end                                                                                                                                                                                                            
-                                                                                                                                                                                                               
-def create                   
-if @post.save                                                                                                                                                                                                  
-    redirect_to @post                                                                                                                                                                                          
-  else                                                                                                                                                                                                         
-    render 'new'                                                                                                                                                                                               
-  end                                                                                                                                                                                                          
-end                                                                                                                                                                                                            
-private                                                                                                                                                                                                        
-  def post_params                                                                                                                                                                                              
-    params.require(:post).permit(:name,:nickname,:email,:image, :text)                                                                                                                                         
-  end     
+  def new
+    @user = User.new
+  end
+  
+  def create
+    @user = User.new(user_params)
+    @user.save
+    redirect_to @user
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+  
+  def index
+    @user = User.all
+  end   
+  
+  private
+    def user_params
+      params.require(:user).permit(:name, :nickname, :email, :image)
+    end
+
+
 end

@@ -1,6 +1,10 @@
 <h1>Welcome to Bueller Student Management!</h1>
-<%= link_to "Home Page", controller: "user" %> 
-<%= link_to 'New Student', new_user_path %>
+  
+<%= link_to "Home Page", controller: "user" %>      |      <%= link_to 'New User', new_user_path(@user) %>
+
+<% flash.each do |name, msg| %>
+ <%= content_tag :div,msg, class: name %>
+ <%end%>
 <table>
   <tr>
     <th>Name</th>
@@ -9,9 +13,9 @@
     <th>Image URL </th>
   </tr>
  
-  <% @posts.each do |post| %>
+  <% @user.each do |post| %>
     <tr>
-      <td><%= post.name %></td>
+      <td><%= post.sname %></td>
       <td><%= post.nickname %></td>
       <td><%= post.email %></td>
       <td><%= post.image %></td>

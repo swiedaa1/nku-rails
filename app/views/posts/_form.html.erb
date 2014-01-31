@@ -1,16 +1,5 @@
 <%= link_to 'Edit', edit_post_path(@post) %>
 
- <% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
-      this student from being added:</h2>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -31,4 +20,3 @@
   <p>
     <%= f.submit %>
   </p>
-<% end %>
