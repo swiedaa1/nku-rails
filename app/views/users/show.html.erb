@@ -1,0 +1,19 @@
+<p>
+  <strong>Name:</strong>
+  <%= @users.name %>
+</p>
+<p>
+  <strong>Nickname:</strong>
+  <%= @users.nickname %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @users.email %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= @users.image %>
+</p>
+
+<%= link_to 'Edit Student', edit_user_path(@users) %> |
+<%= link_to 'Back to Home Page', users_path %>

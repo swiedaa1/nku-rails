@@ -1,0 +1,33 @@
+<%= form_for @users do |f| %>
+  <% if @users.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@users.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @users.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname %>
+  </p>
+   <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+   <p>
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
