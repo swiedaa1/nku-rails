@@ -35,13 +35,13 @@ def update
   end
 end
 
-def destroy
-  @post = Post.find(params[:id])
-  @post.destroy
- 
-  redirect_to posts_path
+def create
+if @post.save
+    redirect_to @post
+  else
+    render 'new'
+  end
 end
-
 private
   def post_params
     params.require(:post).permit(:name,:nickname,:email,:image, :text)

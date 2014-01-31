@@ -1,25 +1,19 @@
-<% link_to "Home Page", controller: "user" %> | <%= link_to 'Create a new student', new_user_path %>                                                                                                                                         
-                                                                                                                                                                                                                                               
-<table>                                                                                                                                                                                                                                        
-  <tr>                                                                                                                                                                                                                                         
-    <th>Name</th>                                                                                                                                                                                                                              
-    <th>Nickname</th>                                                                                                                                                                                                                          
-    <th>Email</th>                                                                                                                                                                                                                             
-    <th>Image URL</th>                                                                                                                                                                                                                         
-    <th></th>                                                                                                                                                                                                                                  
-    <th></th>                                                                                                                                                                                                                                  
-  </tr>                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                               
-<% @user.each do |user| %>                                                                                                                                                                                                                    
-  <tr>                                                                                                                                                                                                                                         
-    <td><%= user.name %></td>                                                                                                                                                                                                                  
-    <td><%= user.nickname %></td>                                                                                                                                                                                                              
-    <td><%= user.email %></td>                                                                                                                                                                                                                 
-    <td><%= user.image %></td>                                                                                                                                                                                                                 
-    <td><%= link_to 'Show', user %></td>                                                                                                                                                                                                       
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>                                                                                                                                                                                       
-    <td><%= link_to 'Destroy', user_path(user),                                                                                                                                                                                                
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>                                                                                                                                                                
-  </tr>                                                                                                                                                                                                                                        
-<% end %>                                                                                                                                                                                                                                      
-</table>  
+<h1>Welcome to Bueller Student Management!</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Nickname</th>
+    <th>Email</th>
+    <th>Image URL </th>
+  </tr>
+ 
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.name %></td>
+      <td><%= post.nickname %></td>
+      <td><%= post.email %></td>
+      <td><%= post.image %></td>
+    </tr>
+  <% end %>
+</table>
