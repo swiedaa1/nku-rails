@@ -5,11 +5,13 @@ class UserController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)
-    @user.save
-    redirect_to @user
-  end
-
+    @user = User.new(user_params).permit(:name, :nickname, :email, :image)
+    if @user.save
+    redirect_to user 
+    else 
+	render 'new'
+    end
+end
   def show
     @user = User.find(params[:id])
   end
