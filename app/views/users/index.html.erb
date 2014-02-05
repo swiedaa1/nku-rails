@@ -6,26 +6,30 @@
 
 <br>
 <br>
-<%= link_to 'Create a new student', new_user_path %><table>
+<%= link_to 'Sign Up!', new_user_path %><table>
   <tr>
-    <th>Name:</th>
-    <th>Nickname:</th>
-    <th>Email:</th>
-    <th>Image URL: </th>
+      <th>Image URL: </th>
+      <th>Name:</th>
+      <th>Nickname:</th>
+      <th>Email:</th>
+      <th>Password: </th>
+      <th>Password Confirmation: </th>
     <th></th>
   </tr>
 
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
-      <td><%= user.nickname %></td>
-      <td><%= user.email %></td>
-      <td><% if user.image != "" %>
-        <img src="<%= user.image %>" height="52" width="52" />
+           <td><% if user.image != "" %>
+        <img src="<%= user.image %>" height="120" width="120" />
         <% else %>
         <%= image_tag avatar_url(user) %>
         <% end %>
       </td>
+      <td><%= user.name %></td>
+      <td><%= user.nickname %></td>
+      <td><%= user.email %></td>
+      <td><%= user.password %></td>
+      <td><%= user.password_confirmation %></td>
       <td><%= link_to 'Show Student', user_path(user) %></td>
       <td><%= link_to 'Edit Student', edit_user_path(user) %></td>
       <td><%= link_to 'Destroy Student', user_path(user),

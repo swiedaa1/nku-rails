@@ -7,14 +7,14 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+# Use has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-gem 'Gravtastic'
-
 
 group :development, :test do
   gem 'byebug'

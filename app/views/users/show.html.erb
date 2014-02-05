@@ -14,6 +14,14 @@
   <strong>Image:</strong>
   <%= @users.image %>
 </p>
+<p>
+  <strong>Password:</strong>
+  <%= @users.password %>
+</p>
+<p>
+  <strong>Password Confirmation:</strong>
+  <%= @users.passwod_confirmation %>
+</p>
 
 <%= link_to 'Edit Student', edit_user_path(@users) %> |
 <%= link_to 'Back to Home Page', users_path %>
