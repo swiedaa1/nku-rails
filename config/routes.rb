@@ -6,12 +6,17 @@ NkuRails::Application.routes.draw do
   # You can have the root of your site routed with "root"
 resources :users do 
 end
+  resources :sessions
+controller :sessions do
+ get 'login' => :new
+ post 'login' => :create
+ get 'logout' => :destroy
+end
 resources :posts do 
 resources :comments
 end
  root 'welcome#index'
-
-  get "login" => "users#login", :as => "login"
+  # get "login" => "users#login", :as => "login"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
