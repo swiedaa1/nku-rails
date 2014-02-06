@@ -11,6 +11,7 @@ resources :comments
 end
  root 'welcome#index'
 
+  get "login" => "users#login", :as => "login"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
