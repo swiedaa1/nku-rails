@@ -1,7 +1,7 @@
+<div class="center-block">
 <h1>Log in</h1>
-
 <% flash.each do |key, value| %>
-<div class="alert alert-<%= key %>"><strong><%= value %></strong></div>
+   <div class="alert alert-<%= key %>"><p class="bg-danger"><%= value %></p></div>
 <% end %> 
 <%= form_tag sessions_path do %>
 
@@ -18,3 +18,4 @@
 <div><%= submit_tag "Log in" %></div>
 
 <% end %>
+</div>

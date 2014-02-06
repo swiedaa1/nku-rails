@@ -1,50 +1,51 @@
 <h1>Welcome to Bueller student management!</h1><br>
-
-  <a href="http://swiedaa1-72810.use1.nitrousbox.com/users" class="btn btn-default" role="button">Home Page</a> 
-<% if current_user == nil %>
-  <a href="http://swiedaa1-72810.use1.nitrousbox.com/login" class="btn btn-default" role="button">Log In!</a>    
-  <a href="http://swiedaa1-72810.use1.nitrousbox.com/users/new" class="btn btn-primary btn-l" role="button">Sign Up!</a>
-<% else %>
-  <%= link_to 'LOGOUT', logout_path %> 
-<% end %>
+  <%= link_to users_path, :class => "btn btn-default" do %>Home Page<% end %>
+  <% if current_user %>
+    <%= link_to logout_path, :class => "btn btn-default" do %>Log out<% end %>     
+  <% else %>
+    <div class="pull-right">
+      <%= link_to "login", :class => "btn btn-default" do %>Log in<% end %> 
+      <%= link_to new_user_path, :class => "btn btn-primary btn-l" do %>Sign up!<% end %>
+    </div>     
+  <% end %>
 <br><br>
-
-<p><% if current_user == nil %>
-Hello!
-<% else %>
-Hello, LOGGED IN USER!
-<% end %></p>
+  <p>
+    <% if current_user %>
+     Hello, <%= current_user.name %>!
+    <% else %>
+   
+    <% end %></p>
 <br><br>
-
-<% flash.each do |name, msg| %>
+      <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
-    <% end %>
-<table class="table">
-  <tr>
-      <th>Image: </th>
-      <th>Name:</th>
-      <th>Nickname:</th>
-      <th>Email:</th>
-    <th></th>
-    <th></th>
-  </tr>
+      <% end %>
 
-  <% @users.each do |user| %>
+<table class="table">
     <tr>
-           <td><% if user.image != "" %>
-        <img src="<%= user.image %>" height="120" width="120" />
-        <% else %>
-        <%= image_tag avatar_url(user) %>
-        <% end %>
-      </td>
-      <td><%= user.name %></td>
-      <td><%= user.nickname %></td>
-      <td><%= user.email %></td>
-      <td> <% if current_user && user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(user) %></td>
-            <td><%= link_to 'Delete Profile', user_path(user),
-                      method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
+        <th>Image: </th>
+        <th>Name:</th>
+        <th>Nickname:</th>
+        <th>Email:</th>
+        <th></th>
+        <th></th>
+    </tr>
+        <% @users.each do |user| %>
+    <tr>
+        <td>
+          <% if user.image != "" %>
+            <img src="<%= user.image %>" height="120" width="120" />
+          <% else %>
+            <%= image_tag avatar_url(user) %>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+        <td> <% if current_user && user.email == current_user.email %>
+             <%= link_to 'Edit Profile', edit_user_path(user) %></td>
+        <td> <%= link_to 'Delete Profile', user_path(user),
+                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             <% end %>
      </tr>
   <% end %>
 </table>

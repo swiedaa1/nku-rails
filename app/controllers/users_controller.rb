@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  
-
   def index
     @users = User.all
   end
@@ -28,7 +26,6 @@ class UsersController < ApplicationController
  
   def update
     @users = User.find(params[:id])
-
     if @users.update(user_params)
       redirect_to users_path, alert: "Successfully updated"
     else
@@ -39,12 +36,10 @@ class UsersController < ApplicationController
   def destroy
     @users = User.find(params[:id])
     @users.destroy
-
     redirect_to users_path
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :nickname, :email, :image, :password, :password_confirmation)
   end
