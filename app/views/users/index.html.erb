@@ -1,7 +1,8 @@
 <h1>Welcome to Bueller student management!</h1><br>
   <%= link_to users_path, :class => "btn btn-default" do %>Home Page<% end %>
   <% if current_user %>
-    <%= link_to logout_path, :class => "btn btn-default" do %>Log out<% end %>     
+    <%= link_to logout_path, :class => "btn btn-default" do %>Log out<% end %> 
+    <%= link_to new_attendance_path, :class => "btn btn-primary btn-l" do %>I'm here!<% end %>
   <% else %>
     <div class="pull-right">
       <%= link_to "login", :class => "btn btn-default" do %>Log in<% end %> 
