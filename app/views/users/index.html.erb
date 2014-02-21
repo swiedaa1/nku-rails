@@ -9,69 +9,77 @@
       <%= link_to new_user_path, :class => "btn btn-primary btn-l" do %>Sign up!<% end %>
     </div>     
   <% end %>
-<br><br>
-  <p>
-    <% if current_user %>
-     Hello, <%= current_user.name %>!
-    <% else %>
-   
-    <% end %></p>
-<br><br>
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-      <% end %>
+<br /><br />
+<p>
+ <% if current_user %>
+   Hello, <%= current_user.name %>!
+ <% else %>
+   Hello! Please log in.
+ <% end %>
+</p><br /><br />
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, class: name %>
+<% end %>
 
 <style>
   td {padding: 5px}
   th {padding: 5px}
 </style>
 
-   <% @current = current_user %>
-     <% today = Date.today %> 
-     <% @seat_1 = User.in_seat(1, today) %>
-     <% @seat_2 = User.in_seat(2, today) %>
-     <% @seat_3 = User.in_seat(3, today) %>
-     <% @seat_4 = User.in_seat(4, today) %>
-     <% @absent = User.absent(today) %>
+<% @current = current_user 
+ today = Date.today  
+ @seat_1 = User.in_seat(1, today) 
+ @seat_2 = User.in_seat(2, today) 
+ @seat_3 = User.in_seat(3, today) 
+ @seat_4 = User.in_seat(4, today) 
+ @absent = User.absent(today) %>
 
 <table cellspacing="1" width="700px" style="height: 400px" cellpadding="2" align="center" border="1">
-    <tr>
-        <td><% @seat_1.each do |s| %>
+  <tr>
+    <td>
+      <% @seat_1.each do |s| %>
           <% if s.image != "" %>
             <img src="<%= s.image %>" height="80" width="80" />
           <% else %>
             <%= image_tag avatar_url(s) %>
           <% end %>
-          <%= s.nickname %><br /><br />
-           <% end %>
-          </td>
-        <td><% @seat_2.each do |s| %>
-           <% if s.image != "" %>
+           <%= s.nickname %><br /><br />
+      <% end %>
+    </td>
+    <td>
+      <% @seat_2.each do |s| %>
+          <% if s.image != "" %>
             <img src="<%= s.image %>" height="80" width="80" />
           <% else %>
             <%= image_tag avatar_url(s) %>
           <% end %>
-          <%= s.nickname %><br /><br />
-           <% end %></td>
-    </tr>
-    <tr>
-        <td><% @seat_3.each do |s| %>
-           <% if s.image != "" %>
+           <%= s.nickname %><br /><br />
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <% @seat_3.each do |s| %>
+          <% if s.image != "" %>
             <img src="<%= s.image %>" height="80" width="80" />
           <% else %>
             <%= image_tag avatar_url(s) %>
           <% end %>
-          <%= s.nickname %><br /><br />
-           <% end %></td>
-        <td><% @seat_4.each do |s| %>
-           <% if s.image != "" %>
+           <%= s.nickname %><br /><br />
+       <% end %>
+    </td>
+    <td>
+      <% @seat_4.each do |s| %>
+          <% if s.image != "" %>
             <img src="<%= s.image %>" height="80" width="80" />
           <% else %>
             <%= image_tag avatar_url(s) %>
           <% end %>
-          <%= s.nickname %><br /><br />
-           <% end %></td>
-    </tr>
+           <%= s.nickname %><br /><br />
+      <% end %>
+    </td>
+  </tr>
 </table>
 <h3 align="center">Front of classroom</h3>
 
@@ -86,7 +94,7 @@
           <% end %>
       <span><%= s.nickname %></span>
     </li>
-<% end %>
+  <% end %>
 </ol>  
 
 
