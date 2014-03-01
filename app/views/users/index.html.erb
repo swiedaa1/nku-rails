@@ -14,7 +14,7 @@
    end %>
 
 <!-- Date picker -->
-<h1>Attendance for <%= @selected_date %></h1>
+<h4>Attendance for <%= @selected_date %></h4>
 
 <%= form_tag( users_path, method: 'get') do %>
   <%= date_field_tag :selected_date, params[:selected_date] %>

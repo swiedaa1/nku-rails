@@ -21,7 +21,7 @@
 
   <% @attendances.each do |a| %>
       <tr>
-        <td><%= link_to a.user_id, attendance_path(a.user_id) %></td>  
+        <td><%= link_to a.user.name, attendance_path(a.user_id) %></td>  
         <td><%= a.attended_on %></td>
         <td><%= a.seat %></td>
       </tr>

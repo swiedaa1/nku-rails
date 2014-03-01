@@ -19,11 +19,11 @@
     <th>Seat</th>
   </tr>
 
-  <% @attendances.each do |attendance| %>
+  <% @attendances.each do |a| %>
       <tr>
-        <td><%= link_to attendance.user_id, attendance_path(attendance.user_id) %></td>  
-        <td><%= attendance.attended_on %></td>
-        <td><%= attendance.seat %></td>
+        <td><%= link_to a.user.name, attendance_path(a.user_id) %></td>  
+        <td><%= a.attended_on %></td>
+        <td><%= a.seat %></td>
       </tr>
   <% end %>
 </table>

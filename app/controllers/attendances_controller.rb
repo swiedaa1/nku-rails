@@ -27,7 +27,7 @@ class AttendancesController < ApplicationController
     @attendances = Attendance.where("user_id = ?", params[:id])
   end
   
- def index
+  def index
     if(params[:id] == nil)
       @attendances = Attendance.all
     else
