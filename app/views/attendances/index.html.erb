@@ -18,14 +18,12 @@
     <th>Attended On</th>
     <th>Seat</th>
   </tr>
-  
-  <% @attendances.each do |attendance| %>
-    <% if @current && attendance.user_id == @current.id %>
+
+  <% @attendances.each do |a| %>
       <tr>
-        <td><%= @current.name %></td>
-        <td><%= attendance.attended_on %></td>
-        <td><%= attendance.seat %></td>
+        <td><%= link_to a.user_id, attendance_path(a.user_id) %></td>  
+        <td><%= a.attended_on %></td>
+        <td><%= a.seat %></td>
       </tr>
-    <% end %>
   <% end %>
 </table>

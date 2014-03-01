@@ -1,4 +1,4 @@
-<h1>Welcome to Bueller student management!</h1><br>
+<h1>Welcome to Bueller student management!</h1><br />
   <%= link_to users_path, :class => "btn btn-default" do %>Home Page<% end %>
   <% if current_user %>
     <%= link_to logout_path, :class => "btn btn-default" do %>Log out<% end %> 
@@ -9,6 +9,19 @@
       <%= link_to new_user_path, :class => "btn btn-primary btn-l" do %>Sign up!<% end %>
     </div>     
   <% end %>
+<% if params[:selected_date] == nil
+    params[:selected_date] = Date.today
+   end %>
+
+<!-- Date picker -->
+<h1>Attendance for <%= @selected_date %></h1>
+
+<%= form_tag( users_path, method: 'get') do %>
+  <%= date_field_tag :selected_date, params[:selected_date] %>
+  <%= submit_tag "View Attendance" %>
+<% end %>
+
+<%= link_to "View all attendances", attendances_path  %>
 <br /><br />
 <p>
  <% if current_user %>
@@ -28,12 +41,12 @@
 </style>
 
 <% @current = current_user 
- today = Date.today  
- @seat_1 = User.in_seat(1, today) 
- @seat_2 = User.in_seat(2, today) 
- @seat_3 = User.in_seat(3, today) 
- @seat_4 = User.in_seat(4, today) 
- @absent = User.absent(today) %>
+ day = params[:selected_date] 
+ @seat_1 = User.in_seat(1, day) 
+ @seat_2 = User.in_seat(2, day) 
+ @seat_3 = User.in_seat(3, day) 
+ @seat_4 = User.in_seat(4, day) 
+ @absent = User.absent(day) %>
 
 <table cellspacing="1" width="700px" style="height: 400px" cellpadding="2" align="center" border="1">
   <tr>
