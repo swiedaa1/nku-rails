@@ -8,10 +8,10 @@ class AttendancesController < ApplicationController
     
     @attendance = Attendance.new
     @attendance.seat = params[:attendance][:seat]
-    @attendance.attended_on = Time.now
+    @attendance.attended_on = Time.zone.now #Fix UTC default time issue
     @attendance.user_id = @current.id
     
-    @alreadyAttended = Attendance.where( :attended_on => Date.today,
+    @alreadyAttended = Attendance.where( :attended_on => Time.zone.today,
       :user_id => @current.id )
     
     if( @alreadyAttended.first == nil )
@@ -39,7 +39,7 @@ class AttendancesController < ApplicationController
   def attendance_params
     current = get_current_user
     params[:attendance][:user_id] = current.id
-    params[:attendance][:attended_on] = Date.today
+    params[:attendance][:attended_on] = Time.zone.today
     params.require(:attendance).permit(:seat, :user_id, :attended_on, :nickname)
   end
 end
