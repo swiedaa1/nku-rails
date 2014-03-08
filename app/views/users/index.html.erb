@@ -1,14 +1,4 @@
 <h1>Welcome to Bueller student management!</h1><br />
-  <%= link_to users_path, :class => "btn btn-default" do %>Home Page<% end %>
-  <% if current_user %>
-    <%= link_to logout_path, :class => "btn btn-default" do %>Log out<% end %> 
-    <%= link_to new_attendance_path, :class => "btn btn-primary btn-l" do %>I'm here!<% end %>
-  <% else %>
-    <div class="pull-right">
-      <%= link_to "login", :class => "btn btn-default" do %>Log in<% end %> 
-      <%= link_to new_user_path, :class => "btn btn-primary btn-l" do %>Sign up!<% end %>
-    </div>     
-  <% end %>
 <% if params[:selected_date] == nil
     params[:selected_date] = Date.today
    end %>
@@ -23,13 +13,6 @@
 
 <%= link_to "View all attendances", attendances_path  %>
 <br /><br />
-<p>
- <% if current_user %>
-   Hello, <%= current_user.name %>!
- <% else %>
-   Hello! Please log in.
- <% end %>
-</p><br /><br />
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, class: name %>

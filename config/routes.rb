@@ -4,7 +4,8 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :users 
+  resources :users
+  get 'all_users', to: "users#all", as: :all_users
   resources :sessions
   controller :sessions do
    get 'login' => :new

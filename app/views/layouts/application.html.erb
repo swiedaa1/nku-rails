@@ -7,8 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<style>
+  .hello-text {display: inline-block; float: none;}
+  .smaller {font-size: 115%; padding-right: 10px;}
+</style>
 
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse navbar-left">
+      <div class="navbar-text">
+        <%= link_to root_path, class: "btn btn-primary btn-l" do %>Home<% end %>
+        <% if current_user %>
+          <%= link_to root_path, class: "btn btn-default" do %>Seating Chart<% end %>
+          <%= link_to attendances_path, class: "btn btn-default" do %>All Attendances<% end %>
+          <%= link_to 'all_users', class: "btn btn-default" do %>Student Index<% end %>
+        <% end %>
+      </div>
+    </div>
 
-  <%= yield %>
+    <div class="collapse navbar-collapse navbar-right">
+      <% if current_user %>
+        <p class="navbar-text current-student hello-text">
+          Hello, <%= current_user.name %>! <%= link_to 'Edit Your Profile', edit_user_path(current_user) %>
+        </p>
+        <%= link_to logout_path, class: "btn btn-default" do %>Log out<% end %> 
+        <%= link_to new_attendance_path, class: "btn btn-primary btn-l" do %>I'm here!<% end %>
+      <% else %>
+      <p class="navbar-text current-student">
+      <%= link_to new_user_path, class: "btn btn-primary btn-l" do %>Sign up!<% end %>
+        <%= link_to "login", class: "btn btn-default" do %>Log in<% end %> 
+      </p>
+      <% end %>
+    </div>
+  </nav>
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, class: name %>
+<% end %>
+  
+<%= yield %>
 </body>
 </html>

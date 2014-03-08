@@ -1,5 +1,37 @@
 <h1>Edit Student Information:</h1>
 
-<%= render 'form' %>
+<%= form_for :user, url: users_path(@user), method: :patch do |s| %>
+<p>
+  <%= s.label :name %>
+  <%= s.text_field :name %>
+</p>
 
-<%= link_to 'Back to Home Page', users_path %>
+<p>
+  <%= s.label :nickname %>
+  <%= s.text_field :nickname %>
+</p>
+
+<p>
+  <%= s.label :email %>
+  <%= s.text_field :email %>
+</p>
+
+<p>
+  <%= s.label :image %>
+  <%= s.text_field :image %>
+</p>
+
+<p>
+  <%= s.label :password %>
+  <%= s.password_field :password %>
+</p>
+
+<p>
+  <%= s.label :password_confirmation %>
+  <%= s.password_field :password_confirmation %>
+</p>
+
+<p>
+  <%= s.submit %>
+</p>
+<% end %>

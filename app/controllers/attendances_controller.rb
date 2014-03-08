@@ -16,7 +16,7 @@ class AttendancesController < ApplicationController
     
     if( @alreadyAttended.first == nil )
       @attendance.save
-      redirect_to attendances_path, :notice => "You have successfully logged your attendance."
+      redirect_to root_path, :notice => "You have successfully logged your attendance."
     else
       flash[:error] = "You have already created an attendance for today."
       redirect_to attendances_path

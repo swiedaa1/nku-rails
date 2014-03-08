@@ -1,0 +1,32 @@
+<h1>All Users</h1>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Nickname</th>
+    <th>Email</th>
+  </tr>  
+  <% @all_users = User.all %>
+  <% @all_users.each do |s| %>
+    <tr>
+      <td><% if s.image != "" %>
+            <img src="<%= s.image %>" height="80" width="80" />
+          <% else %>
+            <%= image_tag avatar_url(s) %>
+          <% end %></td>
+      <td><%= s.name %></td>
+      <td><%= s.nickname %></td>
+      <td><%= s.email %></td>
+      <% if @current && s.email == @current.email %>
+      <td>
+        <%= link_to edit_student_path(s), class: "btn btn-default" do %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to user_path(s), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
