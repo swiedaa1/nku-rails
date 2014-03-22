@@ -21,7 +21,12 @@
           <%= link_to root_path, class: "btn btn-default" do %>Seating Chart<% end %>
           <%= link_to attendances_path, class: "btn btn-default" do %>All Attendances<% end %>
           <%= link_to 'all_users', class: "btn btn-default" do %>Student Index<% end %>
-           | <%= link_to new_assignment_path, class: "btn btn-default" do %>New Assignment<% end %>
+          <% if(@current.is_admin) %>
+            <br /><br /><%= link_to new_assignment_path, class: "btn btn-default" do %>New Assignment<% end %>
+            <%= link_to assignments_path, class: "btn btn-default" do %>View all Assignments<% end %>
+          <% else %>
+            <%= link_to assignments_path, class: "btn btn-default" do %>View your Assignments<% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
