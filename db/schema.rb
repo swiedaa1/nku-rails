@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305233345) do
+ActiveRecord::Schema.define(version: 20140321232423) do
+
+  create_table "assignments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "total"
+    t.integer  "score"
+    t.string   "name"
+    t.integer  "user_id"
+  end
 
   create_table "attendances", force: true do |t|
     t.datetime "created_at"
@@ -31,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140305233345) do
     t.datetime "updated_at"
     t.string   "passcon"
     t.string   "password_digest"
+    t.boolean  "is_admin"
   end
 
 end

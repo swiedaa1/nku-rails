@@ -5,6 +5,8 @@ NkuRails::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :users
+    resources :assignments do
+  end
   get 'all_users', to: "users#all", as: :all_users
   resources :sessions
   controller :sessions do
