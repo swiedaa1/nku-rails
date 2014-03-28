@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
+ has_many :attendances, dependent: :destroy
+ has_many :assignments, dependent: :destroy
  validates :name, presence: true,                                                                                                                                                                            
                     length: { minimum: 2 } 
  validates :nickname, presence: true,                                                                                                                                                                            
                     length: { minimum: 2 } 
  has_secure_password
- has_many :attendances, dependent: :destroy
   
   def self.in_seat(seat, date)
     attendances =  Attendance.where("attended_on = ? AND seat = ?", date, seat)

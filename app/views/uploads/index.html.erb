@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <%= value %>
+<% end %>
+
+<%= form_tag uploads_path, action: :upload, multipart: true do %>
+  <% if current_user.is_admin %>
+    <%= file_field_tag 'file' %>
+    <%= submit_tag 'Import' %>
+  <% end %>
+<% end %>

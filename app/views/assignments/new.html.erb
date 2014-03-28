@@ -1,0 +1,33 @@
+<%= form_for :assignment, url: assignments_path do |a| %>
+
+<% @user_array = User.all.to_a %>
+<% @name_array = [] %>
+<% @user_array.each { |a| @name_array.push(a.name) } %>
+
+<h1>New Assignment</h1>
+
+<p>
+  <%= a.label :user %>
+  <%= select :user, :user_id, @name_array %>
+</p>
+
+<p>
+  <%= a.label :name %>
+  <%= a.text_field :name %>
+</p>
+
+<p>
+  <%= a.label :score %>
+  <%= a.text_field :score %>
+</p>
+
+<p>
+  <%= a.label :total %>
+  <%= a.text_field :total %>
+</p>
+
+<p>
+  <%= a.submit %>
+</p>
+
+<% end %>
