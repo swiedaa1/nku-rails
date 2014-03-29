@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :is_admin, only: [:new, :create]
+  delegate :name, :to => :user, :prefix => true
   
   def new
     @assignment = Assignments.new

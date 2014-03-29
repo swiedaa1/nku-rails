@@ -41,7 +41,7 @@
           <% @total_earned += a.score %>
 
           <tr>
-            <td><%= a.user_id %></td>
+            <td><%= a.user_id %></td> 
             <td><%= a.name %></td>
             <td><%= a.score %></td>
             <td><%= a.total %></td>
@@ -60,11 +60,9 @@
       <% Assignments.where("user_id = ?", @current.id).each do |a| %>
           <% @total_points += a.total %>
           <% @total_earned += a.score %>
-          <% if a.user != nil %>
-            <% @user_name = a.user.name %>
-          <% end %>  
+
           <tr>
-            <td><%= @user_name %></td>
+            <td><%= a.user_id %></td>
             <td><%= a.name %></td>
             <td><%= a.score %></td>
             <td><%= a.total %></td>

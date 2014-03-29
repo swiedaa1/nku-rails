@@ -6,7 +6,10 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :users
+  resources :users do
+    resources :uploads
+    resources :assignments
+  end
     resources :assignments do
   end
   get 'all_users', to: "users#all", as: :all_users

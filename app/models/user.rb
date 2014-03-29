@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
  has_many :attendances, dependent: :destroy
- has_many :assignments, dependent: :destroy
+ has_many :assignments
  validates :name, presence: true,                                                                                                                                                                            
                     length: { minimum: 2 } 
  validates :nickname, presence: true,                                                                                                                                                                            
